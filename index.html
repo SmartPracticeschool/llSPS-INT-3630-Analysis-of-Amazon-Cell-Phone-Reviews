@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ 
+		<div class="container">
+		
+	<h1>Analysis of Amazon cell phone Reviews</h1>
+ 
+ <div class="con2">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{url_for("predict")}}" method="POST">
+    	<input type="text" name="message" placeholder="Enter your Review" required="required" />
+        
+        <input type="submit" class="btn btn-primary btn-block btn-large" value="Predict"/>
+        <p><b>{{prediction}}</b></p> 
+        
+    </form>
+ </div>
+    
+    
+        <p><b>	
+	    {% if prediction == "Positive Review" %}
+	    <h2 style="color:blue;">Positive</h2>
+	        <img src="/static/css/static2.png" alt="Positive" class="tab3">
+	    {% else %}
+	    <h2 style="color:red;">Negative</h2>
+	        <img src="/static/css/static1.jpg" alt="Negative" class="tab3">
+	    
+	    {% endif %}
+	    </b>
+        </p>
+        </div>
+</body>
+
+</form>
+</html>
+
